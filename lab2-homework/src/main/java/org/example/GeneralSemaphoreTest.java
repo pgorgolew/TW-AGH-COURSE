@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class CountingSemaphoreTest {
+public class GeneralSemaphoreTest {
     Shared shared;
 
-    public CountingSemaphoreTest(int numOfThreads, int semaphoreVal) {
-        shared = new Shared(semaphoreVal);
+    public GeneralSemaphoreTest(int numOfThreads, int resourcesAmount) {
+        shared = new Shared(resourcesAmount);
 
         List<Thread> threads = Stream.generate(this::createThread)
                 .limit(numOfThreads)

@@ -10,7 +10,7 @@ public class Main {
     }
 
     private static void runGeneralSemaphoreExample(){
-        new CountingSemaphoreTest(20, 4);
+        new GeneralSemaphoreTest(20, 4);
     }
 
     public static void main(String[] argv) {

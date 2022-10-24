@@ -1,22 +1,22 @@
 package org.example;
 
 class GeneralSemaphore extends AbstractSemaphore{
-	private int value;
+	private int resources;
 	private final BinSemaphore accessToValue = new BinSemaphore();
-	private final BinSemaphore isAbleToDecrease = new BinSemaphore();
+	private final BinSemaphore accessToResource = new BinSemaphore();
 
-	public GeneralSemaphore(int val) {
-		value = val;
+	public GeneralSemaphore(int resourcesCount) {
+		resources = resourcesCount;
 	}
 
 	public void P() {
-		this.isAbleToDecrease.P();
+		this.accessToResource.P();
 
 		this.accessToValue.P();
 
-		this.value--;
-		if (this.value > 0) {
-			this.isAbleToDecrease.V();
+		this.resources--;
+		if (this.resources > 0) {
+			this.accessToResource.V();
 		}
 
 		this.accessToValue.V();
@@ -25,8 +25,8 @@ class GeneralSemaphore extends AbstractSemaphore{
 	public void V() {
 		this.accessToValue.P();
 
-		this.value++;
-		this.isAbleToDecrease.V();
+		this.resources++;
+		this.accessToResource.V();
 
 		this.accessToValue.V();
 	}
