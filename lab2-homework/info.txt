@@ -1,0 +1,14 @@
+Przykład z BinSemaphore działa dobrze, zaś z BadBinSemaphore jest nieprzewidywalny.
+Dzieje się tak, ponieważ nie wykorzystujemy pętli while tylko instrukcji if.
+Przez to nie zapewniamy, że w jednym momencie dostęp do zmiennej ma tylko jeden wątek
+
+3 przykładowe wyniki (pierwszy to BinSemaphore, drugi BadBinSemaphore)
+Result = 0
+Result = -50
+--------------
+Result = 0
+Result = -136
+--------------
+Result = 0
+Result = 22
+
