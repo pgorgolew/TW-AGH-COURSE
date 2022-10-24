@@ -1,7 +1,8 @@
 package org.example;
 
 abstract class AbstractSemaphore {
-    protected int value = 1;
+    protected boolean accessToValue = true;
+    protected int threadsInQueue = 0;
 
     abstract public void P();
     abstract public void V();

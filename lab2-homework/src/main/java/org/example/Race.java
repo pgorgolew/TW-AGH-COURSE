@@ -27,7 +27,7 @@ public class Race {
 		});
 	}
 
-	private void safeJoin(Thread thread) {
+	public static void safeJoin(Thread thread) {
 		try {
 			thread.join();
 		} catch (Exception ex) {
@@ -45,7 +45,7 @@ public class Race {
 				.collect(Collectors.toCollection(ArrayList::new));
 
 		Stream.of(incrementThreads, decrementThreads).forEach(list -> list.forEach(Thread::start));
-		Stream.of(incrementThreads, decrementThreads).forEach(list -> list.forEach(this::safeJoin));
+		Stream.of(incrementThreads, decrementThreads).forEach(list -> list.forEach(Race::safeJoin));
 
 		System.out.println("Result = " + counter);
     }

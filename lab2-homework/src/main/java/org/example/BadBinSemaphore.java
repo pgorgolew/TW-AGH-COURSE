@@ -3,30 +3,23 @@ package org.example;
 class BadBinSemaphore extends AbstractSemaphore {
 	@Override
 	public synchronized void V() {
-		if (value == 1){
-			try {
-				this.wait();
-			} catch (InterruptedException ex) {
-				ex.printStackTrace();
-				System.exit(1);
-			}
+		if (this.threadsInQueue > 0) {
+			this.notify();
 		}
-
-		value = 1;
-		this.notifyAll();
+		this.accessToValue = true;
 	}
 
 	@Override
 	public synchronized void P() {
-		if (value == 0){
+		this.threadsInQueue++;
+		if (!this.accessToValue) {
 			try {
 				this.wait();
-			} catch (InterruptedException ex) {
-				ex.printStackTrace();
-				System.exit(-1);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
 		}
-
-		value = 0;
+		this.threadsInQueue--;
+		this.accessToValue = false;
 	}
 }

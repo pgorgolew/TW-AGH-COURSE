@@ -1,14 +1,78 @@
 Przykład z BinSemaphore działa dobrze, zaś z BadBinSemaphore jest nieprzewidywalny.
 Dzieje się tak, ponieważ nie wykorzystujemy pętli while tylko instrukcji if.
-Przez to nie zapewniamy, że w jednym momencie dostęp do zmiennej ma tylko jeden wątek
 
-3 przykładowe wyniki (pierwszy to BinSemaphore, drugi BadBinSemaphore)
-Result = 0
-Result = -50
---------------
-Result = 0
-Result = -136
---------------
-Result = 0
-Result = 22
+UWAGA:
+    Użycie synchronized sprawia, że tylko jeden wątek może wykonywać daną metodę w danym czasie.
+    Uśpienie go zwalnia mutex, przez co inny wątek może rozpocząć wykonywanie tej metody.
 
+Przeanalizujmy 3 wątki chcące wykonać operację ++ dla licznika w przypadku użycia instrukcji if.
+1. Wątek T1 chce wykonać operację P()
+2. Wątek T2 jest uśpiony w operacji P() -> czyli mutex odpowiedzialny za tą metodę jest wolny
+3. Wątek T3 wykonuje operację ++ dla licznika
+
+Może zdarzyć się taka sytuacja:
+1) Wątek T1 rozpoczyna operację P() przez co zajmuje mutex odpowiedzialny za tą metodę
+2) T3 wykonuje operację V() -> używa notify() i budzi wątek T2
+3) T2 czeka na zwolnienie mutexu przez wątek T1
+4) T1 wykonuje metodę P() -> nie wchodzi do if'a, ponieważ T3 zwolnił dostęp do sekcji krytycznej
+5) T2 kończy metodę P(), ponieważ T1 zwolnił mutex wraz z zakończeniem metody P()
+6) Wątki T1, T2 nie synchronizują ze sobą operacji dodawania do licznika przez co otrzymujemy zakłamany wynik
+
+Co więcej, java nie gwarantuje, że wątek nie obudzi się samoczynnie.
+https://docs.oracle.com/javase/1.5.0/docs/api/java/lang/Object.html#wait(long):~:text=A%20thread%20can%20also,loops%2C%20like%20this%20one%3A
+
+
+Przykładowe wykonanie programu:
+GOOD BINARY
+Result = 0
+
+BAD BINARY
+Result = 10
+
+COUNTING/GENERAL SEMAPHORE
+AFTER P(). Thread 45
+AFTER P(). Thread 43
+AFTER P(). Thread 47
+AFTER P(). Thread 44
+JUST BEFORE V(). Thread 44
+AFTER P(). Thread 46
+JUST BEFORE V(). Thread 47
+AFTER P(). Thread 48
+JUST BEFORE V(). Thread 48
+AFTER P(). Thread 49
+JUST BEFORE V(). Thread 43
+AFTER P(). Thread 50
+JUST BEFORE V(). Thread 49
+JUST BEFORE V(). Thread 45
+AFTER P(). Thread 51
+AFTER P(). Thread 52
+JUST BEFORE V(). Thread 46
+JUST BEFORE V(). Thread 52
+AFTER P(). Thread 53
+AFTER P(). Thread 54
+JUST BEFORE V(). Thread 50
+JUST BEFORE V(). Thread 53
+JUST BEFORE V(). Thread 51
+JUST BEFORE V(). Thread 54
+AFTER P(). Thread 55
+AFTER P(). Thread 57
+AFTER P(). Thread 56
+AFTER P(). Thread 58
+JUST BEFORE V(). Thread 58
+AFTER P(). Thread 62
+JUST BEFORE V(). Thread 57
+AFTER P(). Thread 60
+JUST BEFORE V(). Thread 55
+AFTER P(). Thread 61
+JUST BEFORE V(). Thread 56
+AFTER P(). Thread 59
+JUST BEFORE V(). Thread 60
+JUST BEFORE V(). Thread 62
+JUST BEFORE V(). Thread 59
+JUST BEFORE V(). Thread 61
+
+
+
+Czy semafor binarny jest szczególnym przypadkiem semafora ogólnego? Dlaczego?
+    Tak, semafor ogólny z podaną liczbą zasobów równą 1 zachowuje się jak semafor binarny.
+    Sprawia to, że tylko jeden wątek może działać w danym czasie
