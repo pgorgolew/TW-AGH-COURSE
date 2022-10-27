@@ -3,10 +3,13 @@ package org.example;
 import java.util.Random;
 
 public class Philosopher extends Thread {
-    private final Stick leftStick;
-    private final Stick rightStick;
+    private final int ITER = 100;
+    protected final Stick leftStick;
+    protected final Stick rightStick;
     private final int id;
     private int eatingCount = 0;
+    protected long waitTime = 0;
+
 
     public Philosopher(Stick leftStick, Stick rightStick, int id) {
         this.leftStick = leftStick;
@@ -24,31 +27,27 @@ public class Philosopher extends Thread {
 
     @Override
     public void run() {
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < ITER; i++) {
             think();
             eat();
         }
-
-        System.out.println("PHILOSOPHER " + id + " has eatingCount = " + eatingCount);
     }
 
     protected void eat() {
-        leftStick.acquire();
-        System.out.println("PHILOSOPHER " + id + " left stick acquired");
-        if (rightStick.tryAcquire()){
-            System.out.println("PHILOSOPHER " + id + " right stick acquired");
+        long startWaiting = System.nanoTime();
+
+        if (pickUpSticks()){
             eatingCount++;
             safeSleep(10);
-            System.out.println("PHILOSOPHER " + id + " stop eating -> releasing sticks");
             rightStick.release();
         }
         leftStick.release();
+
+        waitTime += System.nanoTime() - startWaiting;
     }
 
     private void think(){
-        System.out.println("PHILOSOPHER " + id + " start thinking");
         safeSleep(100);
-        System.out.println("PHILOSOPHER " + id + " stop thinking");
     }
 
     private void safeSleep(int bound){
@@ -57,5 +56,17 @@ public class Philosopher extends Thread {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    protected boolean pickUpSticks() {
+        leftStick.acquire();
+        return rightStick.tryAcquire();
+    }
+
+    public String getResults() {
+        return "PHILOSOPHER ID " + id +
+                " \tEATING COUNT " + eatingCount +
+                " \tAVG STICK WAIT " + waitTime / (double) ITER +
+                " \tAVG STICK WAIT (eating success) " + waitTime / (double) eatingCount;
     }
 }

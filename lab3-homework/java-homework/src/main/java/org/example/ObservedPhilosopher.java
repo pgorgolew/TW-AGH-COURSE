@@ -1,7 +1,7 @@
 package org.example;
 
 public class ObservedPhilosopher extends Philosopher {
-    private Arbiter arbiter;
+    private final Arbiter arbiter;
 
     public ObservedPhilosopher(Stick leftStick, Stick rightStick, int id, Arbiter arbiter) {
         super(leftStick, rightStick, id);
@@ -12,6 +12,13 @@ public class ObservedPhilosopher extends Philosopher {
     protected void eat(){
         arbiter.waitInQueue();
         super.eat();
-        arbiter.waitInQueue();
+        arbiter.letSomebodyEat();
+    }
+
+    @Override
+    protected boolean pickUpSticks() {
+        leftStick.acquire();
+        rightStick.acquire();
+        return true;
     }
 }

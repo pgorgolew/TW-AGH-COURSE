@@ -3,7 +3,7 @@ package org.example;
 import java.util.concurrent.Semaphore;
 
 public class Arbiter {
-    Semaphore semaphore;
+    private final Semaphore semaphore;
 
     public Arbiter(int n){
         semaphore = new Semaphore(n-1);

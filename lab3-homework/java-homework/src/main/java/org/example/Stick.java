@@ -3,7 +3,6 @@ package org.example;
 import java.util.concurrent.Semaphore;
 
 public class Stick {
-
     private final Semaphore semaphore = new Semaphore(1);
 
     public void acquire(){
