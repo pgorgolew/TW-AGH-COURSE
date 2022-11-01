@@ -3,8 +3,8 @@ package org.example;
 public class ObservedPhilosopher extends Philosopher {
     private final Arbiter arbiter;
 
-    public ObservedPhilosopher(Stick leftStick, Stick rightStick, int id, Arbiter arbiter) {
-        super(leftStick, rightStick, id);
+    public ObservedPhilosopher(Stick leftStick, Stick rightStick, int id, Arbiter arbiter, int iterations) {
+        super(leftStick, rightStick, id, iterations);
         this.arbiter = arbiter;
     }
 

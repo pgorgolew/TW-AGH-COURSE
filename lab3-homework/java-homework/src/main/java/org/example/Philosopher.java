@@ -3,7 +3,7 @@ package org.example;
 import java.util.Random;
 
 public class Philosopher extends Thread {
-    private final int ITER = 100;
+    private final int iterations;
     protected final Stick leftStick;
     protected final Stick rightStick;
     private final int id;
@@ -11,10 +11,11 @@ public class Philosopher extends Thread {
     protected long waitTime = 0;
 
 
-    public Philosopher(Stick leftStick, Stick rightStick, int id) {
+    public Philosopher(Stick leftStick, Stick rightStick, int id, int iterations) {
         this.leftStick = leftStick;
         this.rightStick = rightStick;
         this.id = id;
+        this.iterations = iterations;
     }
 
     public static void safeJoin(Thread thread) {
@@ -27,23 +28,22 @@ public class Philosopher extends Thread {
 
     @Override
     public void run() {
-        for (int i = 0; i < ITER; i++) {
+        for (int i = 0; i < iterations; i++) {
             think();
             eat();
         }
     }
 
     protected void eat() {
-        long startWaiting = System.nanoTime();
-
-        if (pickUpSticks()){
+        long startWaiting = System.currentTimeMillis();
+        boolean pickUpSticksResult = pickUpSticks();
+        waitTime += System.currentTimeMillis() - startWaiting;
+        if (pickUpSticksResult){
             eatingCount++;
             safeSleep(10);
             rightStick.release();
         }
-        leftStick.release();
-
-        waitTime += System.nanoTime() - startWaiting;
+        leftStick.release();;
     }
 
     private void think(){
@@ -66,7 +66,6 @@ public class Philosopher extends Thread {
     public String getResults() {
         return "PHILOSOPHER ID " + id +
                 " \tEATING COUNT " + eatingCount +
-                " \tAVG STICK WAIT " + waitTime / (double) ITER +
-                " \tAVG STICK WAIT (eating success) " + waitTime / (double) eatingCount;
+                " \tAVG STICK WAIT (milisec)" + waitTime / (double) (iterations);
     }
 }
