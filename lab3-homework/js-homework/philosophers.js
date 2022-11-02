@@ -112,22 +112,22 @@ Philosopher.prototype.startNaive = function(count) {
 
             philosopher.startTime = new Date().getTime();
             forks[f1].acquire(function () {
-                if (debug_prints)
+                if (debugPrints)
                     console.log("philosopher " + id + " acquired left fork");
                 forks[f2].acquire(function () {
                     philosopher.acquireTime += new Date().getTime() - philosopher.startTime;
-                    if (debug_prints)
+                    if (debugPrints)
                         console.log("philosopher " + id + " acquired right fork and start to eat");
                     setTimeout(function () {
                         forks[f1].release();
                         forks[f2].release();
-                        if (debug_prints)
+                        if (debugPrints)
                             console.log("philosopher " + id + " released both forks");
                         loopNaive(count - 1);
                     }, Math.floor(Math.random() * 10)) // random as an eating time
                 })
             })
-        }, Math.floor(Math.random() * 50)); // random as a thinking time (bigger than eating time)
+        }, Math.floor(Math.random() * 100)); // random as a thinking time (bigger than eating time)
     }
 
     loopNaive(count);
@@ -156,22 +156,22 @@ Philosopher.prototype.startAsym = function(count) {
 
             philosopher.startTime = new Date().getTime();
             forks[f1].acquire(function () {
-                if (debug_prints)
+                if (debugPrints)
                     console.log("philosopher " + id + " acquired " + ((id % 2 === 1) ? "right" : "left") + " fork");
                 forks[f2].acquire(function () {
                     philosopher.acquireTime += new Date().getTime() - philosopher.startTime;
-                    if (debug_prints)
+                    if (debugPrints)
                         console.log("philosopher " + id + " acquired " + ((id % 2 === 1) ? "left" : "right") + " fork and start to eat");
                     setTimeout(function () {
                         forks[f1].release();
                         forks[f2].release();
-                        if (debug_prints)
+                        if (debugPrints)
                             console.log("philosopher " + id + " released both forks");
                         loopAsym(count - 1);
                     }, Math.floor(Math.random() * 10)) // random as an eating time
                 })
             })
-        }, Math.floor(Math.random() * 50)); // random as a thinking time (bigger than eating time)
+        }, Math.floor(Math.random() * 100)); // random as a thinking time (bigger than eating time)
     }
 
     loopAsym(count);
@@ -201,16 +201,16 @@ Philosopher.prototype.startConductor = function(count, conductor) {
             philosopher.startTime = new Date().getTime();
             conductor.waitInQueue(function() {
                 forks[f1].acquire(function () {
-                    if (debug_prints)
+                    if (debugPrints)
                         console.log("philosopher " + id + " acquired left fork");
                     forks[f2].acquire(function () {
                         philosopher.acquireTime += new Date().getTime() - philosopher.startTime;
-                        if (debug_prints)
+                        if (debugPrints)
                             console.log("philosopher " + id + " acquired right and start to eat");
                         setTimeout(function () {
                             forks[f1].release();
                             forks[f2].release();
-                            if (debug_prints)
+                            if (debugPrints)
                                 console.log("philosopher " + id + " released both forks");
                             conductor.releaseAccess();
                             loopConductor(count - 1);
@@ -218,7 +218,7 @@ Philosopher.prototype.startConductor = function(count, conductor) {
                     })
                 })
             })
-        }, Math.floor(Math.random() * 50)); // random as a thinking time (bigger than eating time)
+        }, Math.floor(Math.random() * 100)); // random as a thinking time (bigger than eating time)
     }
 
     loopConductor(count);
@@ -265,17 +265,17 @@ Philosopher.prototype.startBothForks = function (count) {
             philosopher.startTime = new Date().getTime();
             philosopher.acquireBothForks(function (){
                 philosopher.acquireTime += new Date().getTime() - philosopher.startTime;
-                if (debug_prints)
+                if (debugPrints)
                     console.log("philosopher " + philosopher.id + " acquired both forks");
                 setTimeout(function () {
                     philosopher.forks[philosopher.f1].release();
                     philosopher.forks[philosopher.f2].release();
-                    if (debug_prints)
+                    if (debugPrints)
                         console.log("philosopher " + philosopher.id + " released both forks");
                     loopBothForks(count - 1);
                 }, Math.floor(Math.random() * 10)) // random as an eating time
             })
-        }, Math.floor(Math.random() * 50)); // random as a thinking time (bigger than eating time)
+        }, Math.floor(Math.random() * 100)); // random as a thinking time (bigger than eating time)
     }
 
     loopBothForks(count);
@@ -286,7 +286,7 @@ const args = process.argv.slice(2);
 var N = parseInt(args[0]);
 var eatNum = parseInt(args[1]);
 var loopVersion = args[2];
-var debug_prints = (args.length > 3)
+var debugPrints = (args.length > 3)
 var forks = [];
 var philosophers = []
 let conductor = new Conductor(N)
