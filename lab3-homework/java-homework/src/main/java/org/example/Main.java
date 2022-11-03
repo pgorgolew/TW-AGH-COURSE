@@ -130,7 +130,6 @@ public class Main {
 
 
         String command = "python " + filePath + " " + filename + " arbiter starving";
-        System.out.println(command);
         try {
             Process p = Runtime.getRuntime().exec(command);
             p.waitFor();
