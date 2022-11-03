@@ -1,5 +1,6 @@
 package org.example;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 
 public class Philosopher extends Thread {
@@ -66,6 +67,11 @@ public class Philosopher extends Thread {
     public String getResults() {
         return "PHILOSOPHER ID " + id +
                 " \tEATING COUNT " + eatingCount +
-                " \tAVG STICK WAIT (milisec)" + waitTime / (double) (iterations);
+                " \tAVG STICK WAIT (milisec)" + getAverageWait().toString();
+    }
+
+    public String getAverageWait(){
+        DecimalFormat df = new DecimalFormat("0.00");
+        return df.format(waitTime / (double) (iterations));
     }
 }

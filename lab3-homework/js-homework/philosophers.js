@@ -200,22 +200,18 @@ Philosopher.prototype.startConductor = function(count, conductor) {
 
             philosopher.startTime = new Date().getTime();
             conductor.waitInQueue(function() {
-                forks[f1].acquire(function () {
+                philosopher.acquireBothForks(function (){
+                    philosopher.acquireTime += new Date().getTime() - philosopher.startTime;
                     if (debugPrints)
-                        console.log("philosopher " + id + " acquired left fork");
-                    forks[f2].acquire(function () {
-                        philosopher.acquireTime += new Date().getTime() - philosopher.startTime;
+                        console.log("philosopher " + philosopher.id + " acquired both forks");
+                    setTimeout(function () {
+                        philosopher.forks[philosopher.f1].release();
+                        philosopher.forks[philosopher.f2].release();
                         if (debugPrints)
-                            console.log("philosopher " + id + " acquired right and start to eat");
-                        setTimeout(function () {
-                            forks[f1].release();
-                            forks[f2].release();
-                            if (debugPrints)
-                                console.log("philosopher " + id + " released both forks");
-                            conductor.releaseAccess();
-                            loopConductor(count - 1);
-                        }, Math.floor(Math.random() * 10)) // random as an eating time
-                    })
+                            console.log("philosopher " + philosopher.id + " released both forks");
+                        conductor.releaseAccess();
+                        loopConductor(count - 1);
+                    }, Math.floor(Math.random() * 10)) // random as an eating time
                 })
             })
         }, Math.floor(Math.random() * 100)); // random as a thinking time (bigger than eating time)
@@ -300,7 +296,10 @@ for (var i = 0; i < N; i++) {
 
 function printAvgTimes (){
     for (var i = 0; i < N; i++) {
-        console.log("PHILOSOPHER " + philosophers[i].id + " AVG ACQUIRE TIME (ms): " + philosophers[i].acquireTime / eatNum);
+        console.log(
+            "PHILOSOPHER " + philosophers[i].id + " AVG ACQUIRE TIME (ms): " +
+            Number(philosophers[i].acquireTime / eatNum).toFixed(2)
+        );
     }
 }
 
