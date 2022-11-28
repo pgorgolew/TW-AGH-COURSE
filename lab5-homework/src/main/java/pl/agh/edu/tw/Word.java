@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-
+/*
+This class creates lettersById map which is commonly used in DataManger
+ */
 public class Word {
     private final Map<Integer, Character> lettersById = new HashMap<>();
 

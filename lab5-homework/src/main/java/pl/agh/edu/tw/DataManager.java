@@ -9,6 +9,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/*
+The most important class, resolves data and save results
+ */
 public class DataManager {
     private Word word = null;
     private Alphabet alphabet = null;

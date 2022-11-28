@@ -5,13 +5,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/*
+This class is responsible for all alphabet info and for creating all combinations of letters from alphabet
+ */
 public class Alphabet {
     private final List<Character> alphabetContent;
 
     public Alphabet(String alphabet){
         alphabet = alphabet.replaceAll(" ", "").replaceAll(",", "");
-
-        //TODO CHECK IF VARIABLES ARE UNIQUE
 
         alphabetContent = alphabet.chars()
                 .mapToObj(e -> (char)e)

@@ -5,7 +5,9 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+/*
+This class parse input file (like example_file1.txt) and returns dataManger where info is already set (getDataManager)
+ */
 public class FileManager {
     private final Pattern wordPattern = Pattern.compile("w = (?<word>[a-z]+)");
     private final Pattern alphabetPattern = Pattern.compile("A = \\{(?<alphabetContent>([a-z], )*[a-z])}");

@@ -2,6 +2,9 @@ package pl.agh.edu.tw;
 
 import java.util.Objects;
 
+/*
+This class is used to represent pair of characters
+ */
 public class Tuple {
     private final Character character1;
     private final Character character2;

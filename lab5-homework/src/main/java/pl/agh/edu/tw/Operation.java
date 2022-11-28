@@ -4,6 +4,14 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/*
+This class is responsible for all operation info like
+Eg. x := x + y
+Then
+variable = x
+value = x + y
+dependencies = {x, y}
+ */
 public class Operation {
     private final Character variable;
     private final String value;
