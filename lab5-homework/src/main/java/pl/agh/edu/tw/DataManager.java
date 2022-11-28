@@ -1,6 +1,12 @@
 package pl.agh.edu.tw;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class DataManager {
@@ -10,9 +16,10 @@ public class DataManager {
     private final Map<Integer, Set<Integer>> edges = new HashMap<>();
     private final Set<Integer> rootVerticles = new HashSet<>();
 
-    private final Set<Tuple> dependencies = new HashSet<>();
+    private final List<Tuple> dependencies = new ArrayList<>();
     private final Set<Tuple> independencies = new HashSet<>();
     private String FNF = "";
+    private String graphDot = null;
 
     public void setWord(String word) {
         this.word = new Word(word);
@@ -34,15 +41,84 @@ public class DataManager {
         createDependenciesAndIndependencies();
         createGraph();
         createFNF();
+        generateDotGraph();
+    }
 
+    public void saveResults(String subname) throws IOException, InterruptedException {
+        saveToTxtFile(subname);
+        saveGraphDot(subname);
+        saveGraphvizGraph(subname);
+    }
+
+    private void saveGraphvizGraph(String subname) throws IOException, InterruptedException {
+        String cmd = "dot -Tpng graph_" + subname + ".dot -o graph_" + subname + ".png";
+        ProcessBuilder processBuilder = new ProcessBuilder();
+
+        if (System.getProperty("os.name").startsWith("Windows"))
+            processBuilder.command("cmd.exe", "/c", cmd);
+        else
+            processBuilder.command("sh", "-c", cmd);
+
+        Process process = processBuilder.start();
+        process.waitFor();
+    }
+
+    private void saveGraphDot(String subname) throws IOException {
+        String cwd = System.getProperty("user.dir");
+        Path filePath = Paths.get(cwd, "graph_" + subname + ".dot");
+
+        Files.deleteIfExists(filePath);
+        Files.createFile(filePath);
+
+        FileWriter fileWriter = new FileWriter(filePath.toFile(), true);
+
+        fileWriter.write(graphDot);
+        fileWriter.close();
+    }
+    private void saveToTxtFile(String subname) throws IOException {
+        String cwd = System.getProperty("user.dir");
+        Path filePath = Paths.get(cwd, "results_" + subname + ".txt");
+
+        Files.deleteIfExists(filePath);
+        Files.createFile(filePath);
+
+        FileWriter fileWriter = new FileWriter(filePath.toFile(), true);
+
+        fileWriter.write("D = sym{" +
+                dependencies.stream().map(Tuple::toString).collect(Collectors.joining(",")) +
+                "}" + System.lineSeparator());
+        fileWriter.write("I = sym{" +
+                independencies.stream().map(Tuple::toString).collect(Collectors.joining(",")) +
+                "}" + System.lineSeparator());
+        fileWriter.write("FNF([w]) = " + FNF + System.lineSeparator());
+        fileWriter.write(graphDot + System.lineSeparator());
+        fileWriter.close();
+    }
+
+    private void generateDotGraph() {
+        String result = "";
+        result += "digraph g{" + System.lineSeparator();
+        for (Integer key: edges.keySet()){
+            for (Integer edgeTo: edges.get(key)){
+                result += key + " -> " + edgeTo + System.lineSeparator();
+            }
+        }
+
+        Map<Integer, Character> lettersById = word.getLettersById();
+        for (Integer key: lettersById.keySet()){
+            result += key + "[label=" + lettersById.get(key) + "]" + System.lineSeparator();
+        }
+
+        result += "}" + System.lineSeparator();
+        graphDot = result;
     }
 
     private void createFNF(){
-        saveFNFClass(rootVerticles);
+        addFNFClass(rootVerticles);
         addNewFNFClass(rootVerticles, new HashSet<>());
     }
 
-    private void saveFNFClass(Set <Integer> verticles) {
+    private void addFNFClass(Set <Integer> verticles) {
         FNF += "(";
         verticles.forEach(v -> FNF += word.getLettersById().get(v) + ",");
         FNF = FNF.substring(0, FNF.length() - 1) + ")";
@@ -69,7 +145,7 @@ public class DataManager {
         });
 
         potentialFNFClassElements.removeAll(newPotentialFNFClassElements);
-        saveFNFClass(potentialFNFClassElements);
+        addFNFClass(potentialFNFClassElements);
         addNewFNFClass(potentialFNFClassElements, newPotentialFNFClassElements);
     }
     private void createGraph() {
@@ -118,10 +194,10 @@ public class DataManager {
         return added;
     }
 
-    private boolean areDependent(int currentID, int rootID) {
+    private boolean areDependent(int id1, int id2) {
         Map<Integer, Character> lettersById = word.getLettersById();
 
-        return dependencies.contains(new Tuple(lettersById.get(currentID), lettersById.get(rootID)));
+        return dependencies.contains(new Tuple(lettersById.get(id1), lettersById.get(id2)));
     }
 
     @Override
