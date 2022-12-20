@@ -4,131 +4,261 @@ digraph g{
 0 -> 5
 0 -> 7
 0 -> 9
-11 -> 12
-11 -> 14
-11 -> 16
-11 -> 18
-11 -> 20
-22 -> 23
-22 -> 25
-22 -> 27
-22 -> 29
-31 -> 32
-31 -> 34
-31 -> 36
-31 -> 38
-31 -> 40
-42 -> 43
-42 -> 45
-42 -> 47
-42 -> 49
-51 -> 52
-51 -> 54
-51 -> 56
+0 -> 11
+13 -> 14
+13 -> 16
+13 -> 18
+13 -> 20
+13 -> 22
+13 -> 24
+26 -> 27
+26 -> 29
+26 -> 31
+26 -> 33
+26 -> 35
+37 -> 38
+37 -> 40
+37 -> 42
+37 -> 44
+37 -> 46
+37 -> 48
+50 -> 51
+50 -> 53
+50 -> 55
+50 -> 57
+50 -> 59
+61 -> 62
+61 -> 64
+61 -> 66
+61 -> 68
+70 -> 71
+70 -> 73
+70 -> 75
+70 -> 77
+70 -> 79
+70 -> 81
+83 -> 84
+83 -> 86
+83 -> 88
+83 -> 90
+83 -> 92
+94 -> 95
+94 -> 97
+94 -> 99
+94 -> 101
+103 -> 104
+103 -> 106
+103 -> 108
 1 -> 2
 3 -> 4
 5 -> 6
 7 -> 8
 9 -> 10
-12 -> 13
+11 -> 12
 14 -> 15
 16 -> 17
 18 -> 19
 20 -> 21
-23 -> 24
-25 -> 26
+22 -> 23
+24 -> 25
 27 -> 28
 29 -> 30
-32 -> 33
-34 -> 35
-36 -> 37
+31 -> 32
+33 -> 34
+35 -> 36
 38 -> 39
 40 -> 41
-43 -> 44
-45 -> 46
-47 -> 48
-49 -> 50
-52 -> 53
-54 -> 55
-56 -> 57
-4 -> 22
-4 -> 42
-6 -> 25
-6 -> 45
-8 -> 27
-8 -> 47
-10 -> 29
-10 -> 49
-15 -> 22
+42 -> 43
+44 -> 45
+46 -> 47
+48 -> 49
+51 -> 52
+53 -> 54
+55 -> 56
+57 -> 58
+59 -> 60
+62 -> 63
+64 -> 65
+66 -> 67
+68 -> 69
+71 -> 72
+73 -> 74
+75 -> 76
+77 -> 78
+79 -> 80
+81 -> 82
+84 -> 85
+86 -> 87
+88 -> 89
+90 -> 91
+92 -> 93
+95 -> 96
+97 -> 98
+99 -> 100
+101 -> 102
+104 -> 105
+106 -> 107
+108 -> 109
+4 -> 26
+4 -> 50
+4 -> 83
+6 -> 29
+6 -> 53
+6 -> 86
+8 -> 31
+8 -> 55
+8 -> 88
+10 -> 33
+10 -> 57
+10 -> 90
+12 -> 35
+12 -> 59
+12 -> 92
 17 -> 26
-19 -> 28
-21 -> 30
-26 -> 51
-28 -> 54
-30 -> 56
-35 -> 42
-37 -> 46
-39 -> 48
+19 -> 30
+21 -> 32
+23 -> 34
+25 -> 36
+30 -> 61
+30 -> 94
+32 -> 64
+32 -> 97
+34 -> 66
+34 -> 99
+36 -> 68
+36 -> 101
 41 -> 50
-46 -> 51
-48 -> 55
-50 -> 57
-0[label="A{r=2, i=1}", fillcolor="#3A6E84", style=filled]
-11[label="A{r=3, i=1}", fillcolor="#3A6E84", style=filled]
-22[label="A{r=3, i=2}", fillcolor="#88EE5B", style=filled]
-31[label="A{r=4, i=1}", fillcolor="#3A6E84", style=filled]
-42[label="A{r=4, i=2}", fillcolor="#88EE5B", style=filled]
-51[label="A{r=4, i=3}", fillcolor="#826751", style=filled]
-1[label="B{r=2, j=1, i=1}", fillcolor="#FDF59C", style=filled]
-3[label="B{r=2, j=2, i=1}", fillcolor="#FDF59C", style=filled]
-5[label="B{r=2, j=3, i=1}", fillcolor="#FDF59C", style=filled]
-7[label="B{r=2, j=4, i=1}", fillcolor="#FDF59C", style=filled]
-9[label="B{r=2, j=5, i=1}", fillcolor="#FDF59C", style=filled]
-12[label="B{r=3, j=1, i=1}", fillcolor="#FDF59C", style=filled]
-14[label="B{r=3, j=2, i=1}", fillcolor="#FDF59C", style=filled]
-16[label="B{r=3, j=3, i=1}", fillcolor="#FDF59C", style=filled]
-18[label="B{r=3, j=4, i=1}", fillcolor="#FDF59C", style=filled]
-20[label="B{r=3, j=5, i=1}", fillcolor="#FDF59C", style=filled]
-23[label="B{r=3, j=2, i=2}", fillcolor="#DBA4E8", style=filled]
-25[label="B{r=3, j=3, i=2}", fillcolor="#DBA4E8", style=filled]
-27[label="B{r=3, j=4, i=2}", fillcolor="#DBA4E8", style=filled]
-29[label="B{r=3, j=5, i=2}", fillcolor="#DBA4E8", style=filled]
-32[label="B{r=4, j=1, i=1}", fillcolor="#FDF59C", style=filled]
-34[label="B{r=4, j=2, i=1}", fillcolor="#FDF59C", style=filled]
-36[label="B{r=4, j=3, i=1}", fillcolor="#FDF59C", style=filled]
-38[label="B{r=4, j=4, i=1}", fillcolor="#FDF59C", style=filled]
-40[label="B{r=4, j=5, i=1}", fillcolor="#FDF59C", style=filled]
-43[label="B{r=4, j=2, i=2}", fillcolor="#DBA4E8", style=filled]
-45[label="B{r=4, j=3, i=2}", fillcolor="#DBA4E8", style=filled]
-47[label="B{r=4, j=4, i=2}", fillcolor="#DBA4E8", style=filled]
-49[label="B{r=4, j=5, i=2}", fillcolor="#DBA4E8", style=filled]
-52[label="B{r=4, j=3, i=3}", fillcolor="#B632E0", style=filled]
-54[label="B{r=4, j=4, i=3}", fillcolor="#B632E0", style=filled]
-56[label="B{r=4, j=5, i=3}", fillcolor="#B632E0", style=filled]
-2[label="C{r=2, j=1, i=1}", fillcolor="#B46AA0", style=filled]
-4[label="C{r=2, j=2, i=1}", fillcolor="#B46AA0", style=filled]
-6[label="C{r=2, j=3, i=1}", fillcolor="#B46AA0", style=filled]
-8[label="C{r=2, j=4, i=1}", fillcolor="#B46AA0", style=filled]
-10[label="C{r=2, j=5, i=1}", fillcolor="#B46AA0", style=filled]
-13[label="C{r=3, j=1, i=1}", fillcolor="#B46AA0", style=filled]
-15[label="C{r=3, j=2, i=1}", fillcolor="#B46AA0", style=filled]
-17[label="C{r=3, j=3, i=1}", fillcolor="#B46AA0", style=filled]
-19[label="C{r=3, j=4, i=1}", fillcolor="#B46AA0", style=filled]
-21[label="C{r=3, j=5, i=1}", fillcolor="#B46AA0", style=filled]
-24[label="C{r=3, j=2, i=2}", fillcolor="#686CD7", style=filled]
-26[label="C{r=3, j=3, i=2}", fillcolor="#686CD7", style=filled]
-28[label="C{r=3, j=4, i=2}", fillcolor="#686CD7", style=filled]
-30[label="C{r=3, j=5, i=2}", fillcolor="#686CD7", style=filled]
-33[label="C{r=4, j=1, i=1}", fillcolor="#B46AA0", style=filled]
-35[label="C{r=4, j=2, i=1}", fillcolor="#B46AA0", style=filled]
-37[label="C{r=4, j=3, i=1}", fillcolor="#B46AA0", style=filled]
-39[label="C{r=4, j=4, i=1}", fillcolor="#B46AA0", style=filled]
-41[label="C{r=4, j=5, i=1}", fillcolor="#B46AA0", style=filled]
-44[label="C{r=4, j=2, i=2}", fillcolor="#686CD7", style=filled]
-46[label="C{r=4, j=3, i=2}", fillcolor="#686CD7", style=filled]
-48[label="C{r=4, j=4, i=2}", fillcolor="#686CD7", style=filled]
-50[label="C{r=4, j=5, i=2}", fillcolor="#686CD7", style=filled]
-53[label="C{r=4, j=3, i=3}", fillcolor="#3EE344", style=filled]
-55[label="C{r=4, j=4, i=3}", fillcolor="#3EE344", style=filled]
-57[label="C{r=4, j=5, i=3}", fillcolor="#3EE344", style=filled]
+43 -> 54
+45 -> 56
+47 -> 58
+49 -> 60
+54 -> 61
+56 -> 65
+58 -> 67
+60 -> 69
+65 -> 103
+67 -> 106
+69 -> 108
+74 -> 83
+76 -> 87
+78 -> 89
+80 -> 91
+82 -> 93
+87 -> 94
+89 -> 98
+91 -> 100
+93 -> 102
+98 -> 103
+100 -> 107
+102 -> 109
+0[label="A{r=2, i=1}", fillcolor="#A38CCC", style=filled]
+13[label="A{r=3, i=1}", fillcolor="#A38CCC", style=filled]
+26[label="A{r=3, i=2}", fillcolor="#368F7F", style=filled]
+37[label="A{r=4, i=1}", fillcolor="#A38CCC", style=filled]
+50[label="A{r=4, i=2}", fillcolor="#368F7F", style=filled]
+61[label="A{r=4, i=3}", fillcolor="#DD7B55", style=filled]
+70[label="A{r=5, i=1}", fillcolor="#A38CCC", style=filled]
+83[label="A{r=5, i=2}", fillcolor="#368F7F", style=filled]
+94[label="A{r=5, i=3}", fillcolor="#DD7B55", style=filled]
+103[label="A{r=5, i=4}", fillcolor="#36E43B", style=filled]
+1[label="B{r=2, j=1, i=1}", fillcolor="#7733EF", style=filled]
+3[label="B{r=2, j=2, i=1}", fillcolor="#7733EF", style=filled]
+5[label="B{r=2, j=3, i=1}", fillcolor="#7733EF", style=filled]
+7[label="B{r=2, j=4, i=1}", fillcolor="#7733EF", style=filled]
+9[label="B{r=2, j=5, i=1}", fillcolor="#7733EF", style=filled]
+11[label="B{r=2, j=6, i=1}", fillcolor="#7733EF", style=filled]
+14[label="B{r=3, j=1, i=1}", fillcolor="#7733EF", style=filled]
+16[label="B{r=3, j=2, i=1}", fillcolor="#7733EF", style=filled]
+18[label="B{r=3, j=3, i=1}", fillcolor="#7733EF", style=filled]
+20[label="B{r=3, j=4, i=1}", fillcolor="#7733EF", style=filled]
+22[label="B{r=3, j=5, i=1}", fillcolor="#7733EF", style=filled]
+24[label="B{r=3, j=6, i=1}", fillcolor="#7733EF", style=filled]
+27[label="B{r=3, j=2, i=2}", fillcolor="#D0E0FD", style=filled]
+29[label="B{r=3, j=3, i=2}", fillcolor="#D0E0FD", style=filled]
+31[label="B{r=3, j=4, i=2}", fillcolor="#D0E0FD", style=filled]
+33[label="B{r=3, j=5, i=2}", fillcolor="#D0E0FD", style=filled]
+35[label="B{r=3, j=6, i=2}", fillcolor="#D0E0FD", style=filled]
+38[label="B{r=4, j=1, i=1}", fillcolor="#7733EF", style=filled]
+40[label="B{r=4, j=2, i=1}", fillcolor="#7733EF", style=filled]
+42[label="B{r=4, j=3, i=1}", fillcolor="#7733EF", style=filled]
+44[label="B{r=4, j=4, i=1}", fillcolor="#7733EF", style=filled]
+46[label="B{r=4, j=5, i=1}", fillcolor="#7733EF", style=filled]
+48[label="B{r=4, j=6, i=1}", fillcolor="#7733EF", style=filled]
+51[label="B{r=4, j=2, i=2}", fillcolor="#D0E0FD", style=filled]
+53[label="B{r=4, j=3, i=2}", fillcolor="#D0E0FD", style=filled]
+55[label="B{r=4, j=4, i=2}", fillcolor="#D0E0FD", style=filled]
+57[label="B{r=4, j=5, i=2}", fillcolor="#D0E0FD", style=filled]
+59[label="B{r=4, j=6, i=2}", fillcolor="#D0E0FD", style=filled]
+62[label="B{r=4, j=3, i=3}", fillcolor="#428780", style=filled]
+64[label="B{r=4, j=4, i=3}", fillcolor="#428780", style=filled]
+66[label="B{r=4, j=5, i=3}", fillcolor="#428780", style=filled]
+68[label="B{r=4, j=6, i=3}", fillcolor="#428780", style=filled]
+71[label="B{r=5, j=1, i=1}", fillcolor="#7733EF", style=filled]
+73[label="B{r=5, j=2, i=1}", fillcolor="#7733EF", style=filled]
+75[label="B{r=5, j=3, i=1}", fillcolor="#7733EF", style=filled]
+77[label="B{r=5, j=4, i=1}", fillcolor="#7733EF", style=filled]
+79[label="B{r=5, j=5, i=1}", fillcolor="#7733EF", style=filled]
+81[label="B{r=5, j=6, i=1}", fillcolor="#7733EF", style=filled]
+84[label="B{r=5, j=2, i=2}", fillcolor="#D0E0FD", style=filled]
+86[label="B{r=5, j=3, i=2}", fillcolor="#D0E0FD", style=filled]
+88[label="B{r=5, j=4, i=2}", fillcolor="#D0E0FD", style=filled]
+90[label="B{r=5, j=5, i=2}", fillcolor="#D0E0FD", style=filled]
+92[label="B{r=5, j=6, i=2}", fillcolor="#D0E0FD", style=filled]
+95[label="B{r=5, j=3, i=3}", fillcolor="#428780", style=filled]
+97[label="B{r=5, j=4, i=3}", fillcolor="#428780", style=filled]
+99[label="B{r=5, j=5, i=3}", fillcolor="#428780", style=filled]
+101[label="B{r=5, j=6, i=3}", fillcolor="#428780", style=filled]
+104[label="B{r=5, j=4, i=4}", fillcolor="#B4F19F", style=filled]
+106[label="B{r=5, j=5, i=4}", fillcolor="#B4F19F", style=filled]
+108[label="B{r=5, j=6, i=4}", fillcolor="#B4F19F", style=filled]
+2[label="C{r=2, j=1, i=1}", fillcolor="#6A7C33", style=filled]
+4[label="C{r=2, j=2, i=1}", fillcolor="#6A7C33", style=filled]
+6[label="C{r=2, j=3, i=1}", fillcolor="#6A7C33", style=filled]
+8[label="C{r=2, j=4, i=1}", fillcolor="#6A7C33", style=filled]
+10[label="C{r=2, j=5, i=1}", fillcolor="#6A7C33", style=filled]
+12[label="C{r=2, j=6, i=1}", fillcolor="#6A7C33", style=filled]
+15[label="C{r=3, j=1, i=1}", fillcolor="#6A7C33", style=filled]
+17[label="C{r=3, j=2, i=1}", fillcolor="#6A7C33", style=filled]
+19[label="C{r=3, j=3, i=1}", fillcolor="#6A7C33", style=filled]
+21[label="C{r=3, j=4, i=1}", fillcolor="#6A7C33", style=filled]
+23[label="C{r=3, j=5, i=1}", fillcolor="#6A7C33", style=filled]
+25[label="C{r=3, j=6, i=1}", fillcolor="#6A7C33", style=filled]
+28[label="C{r=3, j=2, i=2}", fillcolor="#F945D1", style=filled]
+30[label="C{r=3, j=3, i=2}", fillcolor="#F945D1", style=filled]
+32[label="C{r=3, j=4, i=2}", fillcolor="#F945D1", style=filled]
+34[label="C{r=3, j=5, i=2}", fillcolor="#F945D1", style=filled]
+36[label="C{r=3, j=6, i=2}", fillcolor="#F945D1", style=filled]
+39[label="C{r=4, j=1, i=1}", fillcolor="#6A7C33", style=filled]
+41[label="C{r=4, j=2, i=1}", fillcolor="#6A7C33", style=filled]
+43[label="C{r=4, j=3, i=1}", fillcolor="#6A7C33", style=filled]
+45[label="C{r=4, j=4, i=1}", fillcolor="#6A7C33", style=filled]
+47[label="C{r=4, j=5, i=1}", fillcolor="#6A7C33", style=filled]
+49[label="C{r=4, j=6, i=1}", fillcolor="#6A7C33", style=filled]
+52[label="C{r=4, j=2, i=2}", fillcolor="#F945D1", style=filled]
+54[label="C{r=4, j=3, i=2}", fillcolor="#F945D1", style=filled]
+56[label="C{r=4, j=4, i=2}", fillcolor="#F945D1", style=filled]
+58[label="C{r=4, j=5, i=2}", fillcolor="#F945D1", style=filled]
+60[label="C{r=4, j=6, i=2}", fillcolor="#F945D1", style=filled]
+63[label="C{r=4, j=3, i=3}", fillcolor="#D47B73", style=filled]
+65[label="C{r=4, j=4, i=3}", fillcolor="#D47B73", style=filled]
+67[label="C{r=4, j=5, i=3}", fillcolor="#D47B73", style=filled]
+69[label="C{r=4, j=6, i=3}", fillcolor="#D47B73", style=filled]
+72[label="C{r=5, j=1, i=1}", fillcolor="#6A7C33", style=filled]
+74[label="C{r=5, j=2, i=1}", fillcolor="#6A7C33", style=filled]
+76[label="C{r=5, j=3, i=1}", fillcolor="#6A7C33", style=filled]
+78[label="C{r=5, j=4, i=1}", fillcolor="#6A7C33", style=filled]
+80[label="C{r=5, j=5, i=1}", fillcolor="#6A7C33", style=filled]
+82[label="C{r=5, j=6, i=1}", fillcolor="#6A7C33", style=filled]
+85[label="C{r=5, j=2, i=2}", fillcolor="#F945D1", style=filled]
+87[label="C{r=5, j=3, i=2}", fillcolor="#F945D1", style=filled]
+89[label="C{r=5, j=4, i=2}", fillcolor="#F945D1", style=filled]
+91[label="C{r=5, j=5, i=2}", fillcolor="#F945D1", style=filled]
+93[label="C{r=5, j=6, i=2}", fillcolor="#F945D1", style=filled]
+96[label="C{r=5, j=3, i=3}", fillcolor="#D47B73", style=filled]
+98[label="C{r=5, j=4, i=3}", fillcolor="#D47B73", style=filled]
+100[label="C{r=5, j=5, i=3}", fillcolor="#D47B73", style=filled]
+102[label="C{r=5, j=6, i=3}", fillcolor="#D47B73", style=filled]
+105[label="C{r=5, j=4, i=4}", fillcolor="#899D67", style=filled]
+107[label="C{r=5, j=5, i=4}", fillcolor="#899D67", style=filled]
+109[label="C{r=5, j=6, i=4}", fillcolor="#899D67", style=filled]
 }
